@@ -1,0 +1,85 @@
+Geez-English Machine Translation Using Deep Learning
+
+Abstract
+
+The Geez language holds a rich repository of Ethiopian history, culture, and philosophy.  Machine translation can unlock this knowledge for broader understanding.  However, translating Geez into English presents challenges due to its complex morphology and limited availability of parallel text data.  This study develops a neural machine translation (NMT) system for Geez-English translation, comparing word-based and morpheme-based (if applicable) approaches using LSTM and Transformer encoder-decoder models.  The Transformer model achieved the highest performance (BLEU score of 9.25), demonstrating the potential of deep learning-based NMT for under-resourced languages like Geez.
+
+1. Introduction
+
+Machine translation is a subfield of computational linguistics that studies how software can be used to translate text or speech from one natural language to another [1, 2]. This study focuses on **unidirectional machine translation** from Geez to English.
+
+2. Related Works
+
+* Getnet [6]: Employed RNN for Geez-English MT, suggesting the promise of NMT for morphologically rich languages.
+* Mengistu et al. [7]: Investigated bidirectional Amharic-Kistanigna MT using deep learning. Recommended Transformer models.
+* Yohannes [8]: Compared statistical and LSTM approaches for Amharic-English MT, finding superior performance with LSTM.
+* Chen et al. [9]:Developed an NMT model for English-French and English-German, investigating both RNN and Transformer architectures.
+
+3. Methodology
+
+3.1. Dataset
+
+We compiled a parallel corpus of 7,100 Geez-English sentence pairs, leveraging existing resources and manual translation efforts (if applicable, briefly describe where you obtained these resources). 
+
+3.2. Preprocessing
+
+We preprocessed our corpus into an appropriate format before feeding data to our model. This included:
+
+* Tokenization:Segmenting sentences into word-level units.
+* One-hot Vector Representation:** Converting each word into a numerical vector for the neural network.
+* Embedding:Reducing the dimensionality of word vectors using Keras embedding layers.
+
+3.3. Model Architectures
+
+* LSTM Model: An encoder-decoder architecture that sequentially processes the source language, capturing context for target language generation.
+* Transformer Model: A self-attention based architecture that captures long-range dependencies within sentences, potentially advantageous for Geez.
+
+3.4. Training Setup
+
+We trained our models using the following configuration:
+
+* Batch size: 64
+* Learning rate: 0.0001
+* Optimizer: Adam
+* Epochs: 50
+* Hardware: (Optional) Specify Kaggle GPU details (if used)
+
+4. Experiments and Results
+
+4.1. Dataset
+
+We used a parallel corpus of 7,100 sentence pairs for training and testing. The corpus consisted of (domain/genre of texts, e.g., historical, religious, literary) texts. We employed an 80/20 train-test split for model evaluation.
+
+4.2. Technical Setup
+
+We conducted our experiments using Python, TensorFlow, Keras, and NumPy with an Adam optimizer.
+
+4.3. Parameters and Values
+
+| Parameter | Value |
+|---|---|
+| Embedding dimension | 256 |
+| Latent dimension | 1024 |
+| Dropout rate | 0.2 |
+| Learning rate | 0.0001 |
+| Epochs | 50 |
+| Batch size | 64 |
+
+4.4. Results
+
+| Model | BLEU Score |
+|---|---|
+| LSTM | 7.32 % |
+| Transformer | 9.25 % |
+
+Analysis: Our experiments demonstrate the Transformer model's superior performance in Geez-English MT, achieving a BLEU score of 9.25 compared to the LSTM's 7.32. We attribute this to the Transformer's self-attention mechanism, which effectively captures long-range dependencies within Geez sentences. 
+
+5. Conclusion
+
+We developed an NMT system for Geez-English translation using LSTM and Transformer models, achieving a BLEU score of 9.25 with the Transformer. A key constraint of the study was the limited size of the parallel corpus. Expanding the corpus is crucial for further improving translation quality and exploring advanced NMT techniques.
+
+6. Future Work
+
+* Dataset Expansion:Acquire a larger parallel corpus to improve model robustness.
+* Morpheme-Based Exploration: Investigate the potential benefits of morpheme-based translation approaches.
+* Addressing Overfitting:
